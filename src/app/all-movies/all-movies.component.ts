@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, HostListener} from '@angular/core';
 import {MovieService} from '../movie.service';
 import Movie from '../movie/Movie';
 
@@ -20,4 +20,7 @@ export class AllMoviesComponent implements OnInit {
   movieRemoved(movie) {
    this.movies =  this.movieservice.removeMovie(movie);
   }
+
+
+
 }

@@ -31,9 +31,12 @@ export class MovieService {
 
 
   PurchaseMovie(selected: Movie) {
-    this.userMovies.push(selected);
-    this.budget -= selected.price;
-    console.log(this.budget);
+    if(!this.userMovies.includes(selected)) {
+      this.userMovies.push(selected);
+      this.budget -= selected.price;
+      console.log(this.budget);
+    }
+
 
   }
 

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, HostListener} from '@angular/core';
 import Movie from './Movie';
 import {MovieService} from '../movie.service';
 
@@ -11,7 +11,7 @@ export class MovieComponent implements OnInit {
   collection: Movie[]
   @Input() chosenMovie: Movie;
   @Output() removedMovie: EventEmitter<Movie> = new EventEmitter();
-
+  mouseOver:boolean
 
   constructor(private movieservice: MovieService) { }
 
@@ -31,6 +31,17 @@ export class MovieComponent implements OnInit {
   }
   getCollection(){
     this.collection = this.movieservice.getCollection()
+  }
+
+  @HostListener('mouseover')
+
+  onMouseOver(){
+    this.mouseOver= true
+  }
+
+  @HostListener('mouseout')
+  onMouseOut(){
+    this.mouseOver=false
   }
 
 }

@@ -1,8 +1,10 @@
 <div>
 <p>{{chosenMovie.title}}</p>
   <div ngClass="image-container">
-  <img src="{{chosenMovie.img}}" (click)="purchaseMovie(chosenMovie)" ngClass='image'>
-
+  <img src="{{chosenMovie.img}}" (click)="purchaseMovie(chosenMovie)"(mouseover)="mouseover=true" (mouseout)="mouseover=false" ngClass='image'>
+  <div *ngIf="mouseOver">
+    {{chosenMovie.descrShort}}
+  </div>
   </div>
   <!--<span>{{chosenMovie.price}}$</span>-->
   <!--<input type="button" value="Purchase" (click)="purchaseMovie(chosenMovie)"/>-->

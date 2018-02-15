@@ -6,9 +6,9 @@ import {MovieService} from '../movie.service';
   templateUrl: './budget.component.html',
   styleUrls: ['./budget.component.css']
 })
-export class BudgetComponent implements OnInit, OnChanges, Output {
-  budget: number;
-  @Output() budgetChanged: EventEmitter<number> = new EventEmitter();
+export class BudgetComponent implements OnInit, OnChanges {
+  budget: number = this.movieService.budget;
+  // @Output() budgetChanged: EventEmitter<number> = new EventEmitter();
 
 
   constructor(private movieService: MovieService) { }
@@ -21,7 +21,7 @@ export class BudgetComponent implements OnInit, OnChanges, Output {
 
   ngOnChanges($event) {
     console.log($event);
-    this.budgetChanged.emit(this.budget);
+    // this.budgetChanged.emit(this.budget);
   }
 
 
