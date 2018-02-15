@@ -1,0 +1,9 @@
+<app-search></app-search>
+<ul>
+  <!--<li *ngFor="let movie of movies">{{movie.title}}-->
+    <!--<input (click) ='purchaseMovie(movie)' type="button" value="purchase"/>-->
+  <!--</li>-->
+  <div ngClass="wrapper">
+  <app-movie *ngFor="let movie of movies" [chosenMovie]="movie" (removedMovie)="movieRemoved($event)" ngClass="one"></app-movie>
+  </div>
+</ul>

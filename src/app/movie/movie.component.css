@@ -1,0 +1,9 @@
+.image{
+  max-width: 500px;
+  max-height: 250px;
+
+  object-fit: cover;
+
+
+}
+

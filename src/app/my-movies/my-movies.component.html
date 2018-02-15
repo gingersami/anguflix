@@ -1,0 +1,6 @@
+<app-search></app-search>
+<app-budget (budgetChanged)="updateBudget($event)" [budget]="budget"></app-budget>
+
+  <div ngClass="wrapper">
+  <app-movie *ngFor="let movie of movies" [chosenMovie]="movie"></app-movie>
+  </div>
