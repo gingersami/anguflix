@@ -1,6 +1,10 @@
-<app-search></app-search>
-<app-budget (budgetChanged)="updateBudget($event)" [budget]="budget"></app-budget>
+<app-budget (budgetChanged)="updateBudget($event)"></app-budget>
+<input [(ngModel)]="searchText" placeholder="search text goes here"/>
 
-  <div ngClass="wrapper">
-  <app-movie *ngFor="let movie of movies" [chosenMovie]="movie"></app-movie>
+  <div *ngIf="movies.length>=1; else empty" ngClass="wrapper">
+  <app-movie *ngFor="let movie of movies | filter : searchText" [chosenMovie]="movie"></app-movie>
   </div>
+
+<ng-template #empty>
+  <h1>Select movies from below to add to your collection</h1>
+</ng-template>

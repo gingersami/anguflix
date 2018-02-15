@@ -6,10 +6,9 @@ import {MovieService} from '../movie.service';
   templateUrl: './budget.component.html',
   styleUrls: ['./budget.component.css']
 })
-export class BudgetComponent implements OnInit, OnChanges, Input {
+export class BudgetComponent implements OnInit, OnChanges, Output {
   budget: number;
   @Output() budgetChanged: EventEmitter<number> = new EventEmitter();
-  @Input() budget:number = this.budget;
 
 
   constructor(private movieService: MovieService) { }
