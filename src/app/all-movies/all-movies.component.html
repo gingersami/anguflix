@@ -1,12 +1,12 @@
-<input [(ngModel)]="searchText" placeholder="search text goes here"/>
-<ul>
-  <!--<li *ngFor="let movie of movies">{{movie.title}}-->
+<div ngClass="all-movies">
+
+  <input [(ngModel)]="searchText" placeholder="search text goes here"/>
+  <ul>
+    <!--<li *ngFor="let movie of movies">{{movie.title}}-->
     <!--<input (click) ='purchaseMovie(movie)' type="button" value="purchase"/>-->
-  <!--</li>-->
-  <div ngClass="wrapper">
-  <app-movie *ngFor="let movie of movies  | filter: searchText;let index=index"  [chosenMovie]="movie" (removedMovie)="movieRemoved($event)" ></app-movie>
-  </div>
-
-
-
-</ul>
+    <!--</li>-->
+    <div ngClass="wrapper">
+      <app-movie *ngFor="let movie of movies  | filter: searchText;let index=index" [chosenMovie]="movie"></app-movie>
+    </div>
+  </ul>
+</div>

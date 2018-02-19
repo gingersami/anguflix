@@ -15,7 +15,5 @@ export class MyMoviesComponent implements OnInit {
     this.movies = this.movieservice.getCollection();
   }
 
-  updateBudget(event) {
-    this.movieservice.getBudget();
-  }
+
 }

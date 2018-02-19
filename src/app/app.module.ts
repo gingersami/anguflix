@@ -11,6 +11,12 @@ import { SearchComponent } from './search/search.component';
 import { MovieComponent } from './movie/movie.component';
 import { BudgetComponent } from './budget/budget.component';
 import { FilterPipe } from './filter.pipe';
+import {HttpClientModule} from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
+import { SingleMovieComponent } from './single-movie/single-movie.component';
+import { OrderByPipe } from './order-by.pipe';
 
 
 @NgModule({
@@ -21,11 +27,17 @@ import { FilterPipe } from './filter.pipe';
     SearchComponent,
     MovieComponent,
     BudgetComponent,
-    FilterPipe
+    FilterPipe,
+    HomeComponent,
+    SingleMovieComponent,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    RouterModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

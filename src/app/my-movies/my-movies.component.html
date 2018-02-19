@@ -1,4 +1,5 @@
-<app-budget (budgetChanged)="updateBudget($event)"></app-budget>
+<div class="collection">
+<app-budget (budgetChanged)="updateBudget($event) [budget]='budget'"></app-budget>
 <input [(ngModel)]="searchText" placeholder="search text goes here"/>
 
   <div *ngIf="movies.length>=1; else empty" ngClass="wrapper">
@@ -8,3 +9,4 @@
 <ng-template #empty>
   <h1>Select movies from below to add to your collection</h1>
 </ng-template>
+</div>

@@ -1,8 +1,9 @@
 <div>
 <p>{{chosenMovie.title}}</p>
   <div ngClass="image-container">
-  <img src="{{chosenMovie.img}}" (click)="purchaseMovie(chosenMovie)"(mouseover)="mouseover=true" (mouseout)="mouseover=false" ngClass='image'>
-  <div *ngIf="mouseOver">
+  <img src="{{chosenMovie.imgUrl}}" (click)="purchaseMovie(chosenMovie)"(mouseover)="mouseover=true" (mouseout)="mouseover=false" ngClass='image'>
+    <a (click)="getMoreInfo()" [routerLink]='["movie", chosenMovie._id]'> More Info</a>
+    <div *ngIf="mouseOver">
     {{chosenMovie.descrShort}}
   </div>
   </div>

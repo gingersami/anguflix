@@ -1,5 +1,9 @@
-import { Injectable } from '@angular/core';
-import Movie from './movie/Movie';
+import {EventEmitter, Injectable} from '@angular/core';
+import Movie from './models/Movie';
+import User from './models/User';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+
 
 const MOVIES: Movie[] = [
   {id: 0, img: 'http://static.comicvine.com/uploads/original/10/104544/4068923-tarzan-wallpaper-walt-disneys-tarzan-6248938-1024-768.jpg', title: 'Tarzan', price: 3, year: 1999, descrShort: 'The movie is about the life of Tarzan. Tarzan was a small orphan who was raised by an ape named Kala since he was a child. He believed that this was his family, but on an expedition Jane Porter is rescued by Tarzan.'},
@@ -9,32 +13,42 @@ const MOVIES: Movie[] = [
   {id: 4, img: 'http://www.cgmeetup.net/forums/uploads/gallery/album_1392/med_gallery_646_1392_48130.jpg', title: 'Beauty and the Beast', year: 2016, price: 3, descrShort: 'Basically the same as the original, except now Hermi-- Emma Wattson plays Belle, fittingly so I would think, given how breath-takingly pretty she is. I mean wow. Rumor has it she\'ll whip out a wand and turn Gaston into a toad.'}
 ];
 
-const USERMOVIES: Movie[] = [];
+const USERS: User = {
+  budget: 1000,
+  collection: []
+};
 
-const BUDGET = 10;
+
 
 
 
 @Injectable()
 export class MovieService {
+  user: User = USERS;
   movies: Movie[] = MOVIES;
-  budget: number = BUDGET;
-  userMovies: Movie[] = USERMOVIES;
+  userMovies: Movie[] = this.user.collection;
+  singleMovie = new EventEmitter()
+  constructor(private http: HttpClient) {}
 
-  getMovies() {
-    return MOVIES;
+  getMovies(): Observable<Object[]> {
+    return this.http.get<Object[]>('https://anguflix-api.herokuapp.com/api/movies');
   }
 
   getCollection() {
-    return USERMOVIES;
+    return this.user.collection;
+  }
+
+  getUser() {
+    return this.user;
   }
 
 
+
   PurchaseMovie(selected: Movie) {
-    if(!this.userMovies.includes(selected)) {
+    if (!this.userMovies.includes(selected)) {
       this.userMovies.push(selected);
-      this.budget -= selected.price;
-      console.log(this.budget);
+      this.user.budget -= selected.price;
+      console.log(this.user.budget);
     }
 
 
@@ -47,8 +61,8 @@ export class MovieService {
     return this.movies;
   }
 
-  getBudget() {
-    return BUDGET;
 
+  getSingleMovie(id) {
+    return this.http.get(`https://anguflix-api.herokuapp.com/api/movies/${id}`);
   }
 }
