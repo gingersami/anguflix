@@ -14,26 +14,26 @@ export class MovieComponent implements OnInit {
   @Output() removedMovie: EventEmitter<Movie> = new EventEmitter();
   mouseOver:boolean;
 
-  constructor(private movieservice: MovieService, private route:ActivatedRoute) { }
+  constructor(private movieService: MovieService, private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.getCollection()
+    this.getCollection();
   }
 
 
 
   purchaseMovie(movie: Movie) {
-    if (this.movieservice.user.budget < movie.price) {
+    if (this.movieService.user.budget < movie.price) {
 
     } else {
 
-    this.movieservice.PurchaseMovie(movie);
+    this.movieService.PurchaseMovie(movie);
     this.removedMovie.emit(movie);
     }
 
   }
   getCollection(){
-    this.collection = this.movieservice.getCollection();
+    this.collection = this.movieService.getCollection();
   }
 
   @HostListener('mouseover')

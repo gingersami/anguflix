@@ -18,11 +18,4 @@ export class AllMoviesComponent implements OnInit {
 
   }
 
-
-  // movieRemoved(movie) {
-  //  this.movies =  this.movieservice.removeMovie(movie);
-  // }
-
-
-
 }
